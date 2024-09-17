@@ -1,6 +1,6 @@
 # jstern
 
-`jstern` is a command-line tool for filtering and formatting JSON logs from Kubernetes pods using the `stern` CLI. This tool allows you to extract specific keys, apply filters, and pretty-print JSON logs with enhanced readability using colored output.
+Jstern is a command-line tool for filtering and formatting JSON logs from Kubernetes pods using the `stern` CLI. This tool allows you to extract specific keys, apply filters, and pretty-print JSON logs with enhanced readability using colored output.
 
 ## Prerequisites
 
@@ -8,17 +8,13 @@
 
 > You can install `stern` by following the instructions on its [official GitHub repository](https://github.com/stern/stern).
 
-- **Cargo**: To be able to build the project, you need to have Rust and Cargo installed.
-
-> You can install Rust and Cargo by following the instructions on the [official Rust website](https://www.rust-lang.org/tools/install).
-
 ## Installation
 
 Download the latest release from the [releases page](https://github.com/uherman/jstern/releases) and extract the binary to a directory in your system path.
 
 ### Build from Source
 
-1. Make sure you have all [prerequisites](#prerequisites) installed.
+1. Make sure you have [Rust and Cargo](https://www.rust-lang.org/tools/install) installed on your system.
 2. Clone this repository and build the project:
 
 ```
@@ -38,9 +34,7 @@ cp target/release/jstern /usr/local/bin
 ## Usage
 
 ```
-
 jstern <pod_query> [options]
-
 ```
 
 ### Options
@@ -72,54 +66,42 @@ jstern <pod_query> [options]
    Fetch logs from a pod with a given name in the default namespace:
 
 ```
-
 jstern my-pod
-
 ```
 
 2. **Specify Namespace**:
    Fetch logs from a pod in a specific namespace:
 
 ```
-
 jstern my-pod -n my-namespace
-
 ```
 
 3. **Select Specific Fields**:
    Extract specific keys from the JSON logs:
 
 ```
-
 jstern my-pod -k metadata.name status.phase
-
 ```
 
 4. **Apply Filters**:
    Filter logs where the `status.phase` is `Running`:
 
 ```
-
 jstern my-pod -f status.phase Running
-
 ```
 
 5. **Use a Selector**:
    Use a selector to extract the value of a specific field:
 
 ```
-
 jstern my-pod -s metadata.name
-
 ```
 
 6. **Pretty Output with Separator and Padding**:
    Print logs with a separator between each entry and padding around entries:
 
 ```
-
 jstern my-pod --separator --padding
-
 ```
 
 ## How It Works
@@ -135,11 +117,3 @@ Feel free to open issues or submit pull requests if you'd like to contribute to 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
-`jstern` simplifies working with JSON logs in Kubernetes by combining the power of `stern` and easy-to-use filtering and formatting options for log inspection.
-
-```
-
-```
