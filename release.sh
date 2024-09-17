@@ -32,4 +32,7 @@ shasum -a 256 release/${version}/jstern_${version}_linux_arm64.tar.gz >> release
 shasum -a 256 release/${version}/jstern_${version}_windows_amd64.tar.gz >> release/${version}/checksums.txt
 shasum -a 256 release/${version}/jstern_${version}_windows_amd64.zip >> release/${version}/checksums.txt
 
+# Extract only the filenames
+sed -i '' "s|release/${version}/||g" release/${version}/checksums.txt
+
 echo "Done!"
