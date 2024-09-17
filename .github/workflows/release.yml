@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'  # Triggers the workflow for version tags (e.g., v1.0.0)
+      - 'v*'
 
 jobs:
   build:
@@ -44,13 +44,13 @@ jobs:
           sha256sum jstern_${{ env.VERSION }}_${{ matrix.target }}.tar.gz >> checksums.txt
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: jstern-${{ env.VERSION }}-${{ matrix.target }}
           path: jstern_${{ env.VERSION }}_${{ matrix.target }}.tar.gz
 
       - name: Upload checksum
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: checksums
           path: checksums.txt
